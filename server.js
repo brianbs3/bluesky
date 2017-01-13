@@ -58,14 +58,20 @@ router.route('/song_list')
 
     });
 
-router.route('/:id')
-    .put(function (req, res) {
-        const {id} = req.params;
-        //const {prop, value} = req.body.data;
-        console.log(id);
-        // console.log(prop);
-        // console.log(value);
-        res.json({message: req.body.data});
+router.route('/members')
+    .post(function (req, res) {
+        const first_name = req.body.first_name;
+        const last_name = req.body.last_name;
+        const role = req.body.role;
+        //const mem = Object.assign({}, )
+        //return members.sequelize.models.members.upsert();
+        //console.log(n);
+        res.json({message: {
+            'first_name': first_name,
+            'last_name': last_name,
+            'role': role
+        }
+        });
     });
 // more routes for our API will happen here
 
