@@ -24,7 +24,7 @@ var db = new Sequelize('bluesky', 'bs', 'bs',{
     },
 });
 
-var members = db.import(__dirname + '/models/project.js');
+var members = db.import(__dirname + '/models/members.js');
 var song_list = db.import(__dirname + '/models/song_list.js');
 
 var port = process.env.PORT || 8080;        // set our port
@@ -39,6 +39,15 @@ router.get('/', function(req, res) {
 });
 
 
+router.route('/members')
+    .get(function(req, res) {
+
+        console.log('hit members route...');
+        var data = db.query("SELECT * from members", {type: db.QueryTypes.SELECT}).then(function(data){
+            res.json(data);
+        });
+
+    });
 router.route('/song_list')
     .get(function(req, res) {
 
@@ -47,6 +56,16 @@ router.route('/song_list')
             res.json(data);
         });
 
+    });
+
+router.route('/:id')
+    .put(function (req, res) {
+        const {id} = req.params;
+        //const {prop, value} = req.body.data;
+        console.log(id);
+        // console.log(prop);
+        // console.log(value);
+        res.json({message: req.body.data});
     });
 // more routes for our API will happen here
 

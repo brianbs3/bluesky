@@ -5,6 +5,7 @@
   "author": "Brian Sizemore",
   "dependencies": {
     "axios": "^0.15.3",
+    "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mysql": "^2.12.0",
