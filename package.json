@@ -1,0 +1,10 @@
+{
+  "name": "node-api",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "sequelize": "^3.29.0"
+  }
+}
