@@ -1,0 +1,21 @@
+CREATE TABLE `bluesky`.`members` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `first_name` VARCHAR(45) NOT NULL COMMENT '',
+  `last_name` VARCHAR(45) NULL COMMENT '',
+  `role` VARCHAR(255) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+
+CREATE TABLE `bluesky`.`song_list` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `artist` VARCHAR(255) NULL COMMENT '',
+  `song_name` VARCHAR(255) NOT NULL COMMENT '',
+  `key` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+

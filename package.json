@@ -1,6 +1,7 @@
 {
-  "name": "node-api",
+  "name": "bluesky",
   "main": "server.js",
+  "author": "Brian Sizemore",
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "^1.15.2",
