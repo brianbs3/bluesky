@@ -12,6 +12,20 @@ var bodyParser = require('body-parser');
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+var Sequelize = require('sequelize');
+
+var db = new Sequelize('bluesky', 'bs', 'bs',{
+    host: '192.168.0.99',
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    },
+});
+
+var members = db.import(__dirname + '/models/project.js');
+var song_list = db.import(__dirname + '/models/song_list.js');
 
 var port = process.env.PORT || 8080;        // set our port
 
@@ -24,6 +38,16 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
+
+router.route('/song_list')
+    .get(function(req, res) {
+
+        console.log('hit song_list route...');
+        var data = db.query("SELECT * from song_list", {type: db.QueryTypes.SELECT}).then(function(data){
+            res.json(data);
+        });
+
+    });
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
