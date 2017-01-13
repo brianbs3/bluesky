@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 var Sequelize = require('sequelize');
 
 var db = new Sequelize('bluesky', 'bs', 'bs',{
-    host: '192.168.0.99',
+    host: 'localhost',
     dialect: 'mysql',
     pool: {
         max: 5,

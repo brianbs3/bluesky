@@ -19,3 +19,11 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
+CREATE TABLE `bluesky`.`shows` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `venue` VARCHAR(255) NULL COMMENT '',
+  `ts` TIMESTAMP NULL DEFAULT now() COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '')
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8
+  COLLATE = utf8_general_ci;
