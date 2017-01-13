@@ -2,6 +2,7 @@
   "name": "bluesky",
   "main": "server.js",
   "author": "Brian Sizemore",
+  "version:": "0.0.1",
   "dependencies": {
     "axios": "^0.15.3",
     "body-parser": "^1.15.2",
