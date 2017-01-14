@@ -8,6 +8,8 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
+const DB_IP = process.env.DB_IP || 'localhost';
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +17,7 @@ app.use(bodyParser.json());
 var Sequelize = require('sequelize');
 
 var db = new Sequelize('bluesky', 'bs', 'bs',{
-    host: 'localhost',
+    host: DB_IP,
     dialect: 'mysql',
     pool: {
         max: 5,
@@ -63,15 +65,26 @@ router.route('/members')
         const first_name = req.body.first_name;
         const last_name = req.body.last_name;
         const role = req.body.role;
+        const data = {
+            first_name: first_name,
+            last_name: last_name,
+            role: role
+        };
+        // db.sequelize.models.members.reate(data)
+        //     .then(
+        //         db.sequelize.models.members.upsert(Object.assign(data));
+        //     )
+        //     .then(res.json(data));
+         res.json(data);
         //const mem = Object.assign({}, )
         //return members.sequelize.models.members.upsert();
         //console.log(n);
-        res.json({message: {
-            'first_name': first_name,
-            'last_name': last_name,
-            'role': role
-        }
-        });
+        // res.json({message: {
+        //     'first_name': first_name,
+        //     'last_name': last_name,
+        //     'role': role
+        // }
+        // });
     });
 // more routes for our API will happen here
 
