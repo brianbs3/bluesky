@@ -9,6 +9,8 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
 const DB_IP = process.env.DB_IP || 'localhost';
+const DB_USER = process.env.DB_USER || 'bs';
+const DB_PASS = process.env.DB_PASS || 'bs';
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
