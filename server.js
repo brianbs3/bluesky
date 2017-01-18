@@ -30,6 +30,7 @@ var db = new Sequelize('bluesky', 'bs', 'bs',{
 
 var members = db.import(__dirname + '/models/members.js');
 var song_list = db.import(__dirname + '/models/song_list.js');
+var shows = db.import(__dirname + '/models/shows.js');
 
 var port = process.env.PORT || 8080;        // set our port
 
@@ -58,8 +59,17 @@ router.route('/song_list')
 
     });
 
+router.route('/shows')
+    .get((req, res) => {
+
+        console.log('hit shows route...');
+        db.models.shows.findAll().then(m => res.json(m));
+
+    });
+
 router.route('/members')
     .post((req, res) => {
+        console.log('one');
         const first_name = req.body.first_name;
         const last_name = req.body.last_name;
         const role = req.body.role;
@@ -68,9 +78,11 @@ router.route('/members')
             last_name: last_name,
             role: role
         };
-
+        console.log('two');
         db.models.members.upsert(data)
-            .then(res.json);
+            .then(res.json(data));
+
+        console.log('three');
     });
 // more routes for our API will happen here
 

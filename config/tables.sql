@@ -1,12 +1,11 @@
-CREATE TABLE `bluesky`.`members` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `first_name` VARCHAR(45) NOT NULL COMMENT '',
-  `last_name` VARCHAR(45) NULL COMMENT '',
-  `role` VARCHAR(255) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+CREATE TABLE `members` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_unique_members` (`first_name`,`last_name`,`role`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `bluesky`.`song_list` (
