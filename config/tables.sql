@@ -14,8 +14,9 @@ CREATE TABLE `song_list` (
   `song_name` varchar(255) NOT NULL,
   `key` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_unique_song_list` (`artist`,`song_name`,`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `idx_unique_song_list` (`artist`,`song_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
 
 
 CREATE TABLE `shows` (
