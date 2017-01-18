@@ -8,15 +8,15 @@ CREATE TABLE `members` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `bluesky`.`song_list` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `artist` VARCHAR(255) NULL COMMENT '',
-  `song_name` VARCHAR(255) NOT NULL COMMENT '',
-  `key` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+CREATE TABLE `song_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `artist` varchar(255) DEFAULT NULL,
+  `song_name` varchar(255) NOT NULL,
+  `key` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_unique_song_list` (`artist`,`song_name`,`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE `bluesky`.`shows` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '',

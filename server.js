@@ -67,6 +67,9 @@ router.route('/shows')
 
     });
 
+/**********************
+ *   POST
+ **********************/
 router.route('/members')
     .post((req, res) => {
         console.log('one');
@@ -83,6 +86,20 @@ router.route('/members')
             .then(res.json(data));
 
         console.log('three');
+    });
+
+router.route('/song_list')
+    .post((req, res) => {
+        const artist = req.body.artist;
+        const song_name = req.body.song_name;
+        const key = req.body.key;
+        const data = {
+            artist: artist,
+            song_name: song_name,
+            key: key
+        };
+        db.models.song_list.upsert(data)
+            .then(res.json(data));
     });
 // more routes for our API will happen here
 
