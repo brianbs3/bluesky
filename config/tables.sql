@@ -18,11 +18,11 @@ CREATE TABLE `song_list` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `bluesky`.`shows` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `venue` VARCHAR(255) NULL COMMENT '',
-  `ts` TIMESTAMP NULL DEFAULT now() COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8
-  COLLATE = utf8_general_ci;
+CREATE TABLE `shows` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `venue` varchar(255) DEFAULT NULL,
+  `ts` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_unique_shows` (`venue`,`ts`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
