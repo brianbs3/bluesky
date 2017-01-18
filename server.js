@@ -71,16 +71,6 @@ router.route('/members')
 
         db.models.members.upsert(data)
             .then(res.json);
-       //  res.json(data);
-        //const mem = Object.assign({}, )
-        //return members.sequelize.models.members.upsert();
-        //console.log(n);
-        // res.json({message: {
-        //     'first_name': first_name,
-        //     'last_name': last_name,
-        //     'role': role
-        // }
-        // });
     });
 // more routes for our API will happen here
 
