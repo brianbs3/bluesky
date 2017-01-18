@@ -38,32 +38,28 @@ var port = process.env.PORT || 8080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
 
 router.route('/members')
-    .get(function(req, res) {
+    .get((req, res) => {
 
         console.log('hit members route...');
-        var data = db.query("SELECT * from members", {type: db.QueryTypes.SELECT}).then(function(data){
-            res.json(data);
-        });
+        db.models.members.findAll().then(m => res.json(m));
 
     });
 router.route('/song_list')
-    .get(function(req, res) {
+    .get((req, res) => {
 
         console.log('hit song_list route...');
-        var data = db.query("SELECT * from song_list", {type: db.QueryTypes.SELECT}).then(function(data){
-            res.json(data);
-        });
+        db.models.song_list.findAll().then(m => res.json(m));
 
     });
 
 router.route('/members')
-    .post(function (req, res) {
+    .post((req, res) => {
         const first_name = req.body.first_name;
         const last_name = req.body.last_name;
         const role = req.body.role;
@@ -72,12 +68,10 @@ router.route('/members')
             last_name: last_name,
             role: role
         };
-        // db.sequelize.models.members.reate(data)
-        //     .then(
-        //         db.sequelize.models.members.upsert(Object.assign(data));
-        //     )
-        //     .then(res.json(data));
-         res.json(data);
+
+        db.models.members.upsert(data)
+            .then(res.json);
+       //  res.json(data);
         //const mem = Object.assign({}, )
         //return members.sequelize.models.members.upsert();
         //console.log(n);
