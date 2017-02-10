@@ -7,8 +7,11 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var morgan      = require('morgan');
 
-const DB_IP = process.env.DB_IP || 'localhost';
+app.use(morgan('dev'));
+
+const DB_IP = process.env.DB_IP || '192.168.0.99';
 const DB_USER = process.env.DB_USER || 'bs';
 const DB_PASS = process.env.DB_PASS || 'bs';
 
@@ -32,7 +35,7 @@ var members = db.import(__dirname + '/models/members.js');
 var song_list = db.import(__dirname + '/models/song_list.js');
 var shows = db.import(__dirname + '/models/shows.js');
 
-var port = process.env.PORT || 8080;        // set our port
+var port = process.env.PORT || 8081;        // set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
